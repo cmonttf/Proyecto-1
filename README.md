@@ -2,11 +2,11 @@
 
 1. Enunciado.
 
-Se solicita desarrollar un programa utilizando el lenguaje de programación Python3 que implemente el problema de las N-Reinas usando algoritmos genéticos. 
+<p style="text-align: justify">Se solicita desarrollar un programa utilizando el lenguaje de programación Python3 que implemente el problema de las N-Reinas usando algoritmos genéticos.</p>
 
-Primero se debe definir como modelar el tablero en un cromosoma a través de una estructura de datos, como por ejemplo, un vector.
+<p style="text-align: justify">Primero se debe definir como modelar el tablero en un cromosoma a través de una estructura de datos, como por ejemplo, un vector.</p>
 
-El código debe de tener al menos las siguientes funciones:
+<p style="text-align: justify">El código debe de tener al menos las siguientes funciones:</p>
 - Generar un número real randómico entre [0 y 1].
 - Generar un número entero randómico entre [0 y N].
 - Inicializar la población.
@@ -15,7 +15,7 @@ El código debe de tener al menos las siguientes funciones:
 - Mutar un individuo.
 - Reducir la población. 
 
-Además, se deben ingresar los siguientes parámetros:
+<p style="text-align: justify">Además, se deben ingresar los siguientes parámetros:</p>
 
 - Valor de la semilla.
 - Tamaño del tablero.
@@ -26,6 +26,6 @@ Además, se deben ingresar los siguientes parámetros:
 
 2. Programa
 
-El código debe ser desarrollado usando una metodología de programación modular, es decir, debe haber uso de funciones y/o métodos que implementen de forma genérica los principales operadores genéticos los cuales serán usados en el programa principal.
+<p style="text-align: justify">El código debe ser desarrollado usando una metodología de programación modular, es decir, debe haber uso de funciones y/o métodos que implementen de forma genérica los principales operadores genéticos los cuales serán usados en el programa principal.</p>
 
-El objetivo de esta implementación es poder crear una biblioteca de gunciones y/o métodos que puedan ser re-utilizados en cualquier otro programa que se pueda implementar en el futuro con el correspondiente ahorro en tiempo y líneas de código.
+<p style="text-align: justify">El objetivo de esta implementación es poder crear una biblioteca de gunciones y/o métodos que puedan ser re-utilizados en cualquier otro programa que se pueda implementar en el futuro con el correspondiente ahorro en tiempo y líneas de código.</p>

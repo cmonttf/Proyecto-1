@@ -1,3 +1,3 @@
 # Proyecto 1
 
-Hola este es el readme
+Este será readme

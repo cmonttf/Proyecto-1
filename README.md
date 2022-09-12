@@ -1,6 +1,6 @@
 # Proyecto 1 Algoritmos Metaheurísticos Inspirados en la Naturaleza: N-Reinas
 
-1. Enunciado.
+## 1. Enunciado.
 
 <p style="text-align: justify">Se solicita desarrollar un programa utilizando el lenguaje de programación Python3 que implemente el problema de las N-Reinas usando algoritmos genéticos.</p>
 
@@ -25,7 +25,7 @@
 - Probabilidad de mutación.
 - Número de iteraciones.
 
-2. Programa
+## 2. Programa
 
 <p style="text-align: justify">El código debe ser desarrollado usando una metodología de programación modular, es decir, debe haber uso de funciones y/o métodos que implementen de forma genérica los principales operadores genéticos los cuales serán usados en el programa principal.</p>
 

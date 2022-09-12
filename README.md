@@ -7,6 +7,7 @@
 <p style="text-align: justify">Primero se debe definir como modelar el tablero en un cromosoma a través de una estructura de datos, como por ejemplo, un vector.</p>
 
 <p style="text-align: justify">El código debe de tener al menos las siguientes funciones:</p>
+
 - Generar un número real randómico entre [0 y 1].
 - Generar un número entero randómico entre [0 y N].
 - Inicializar la población.

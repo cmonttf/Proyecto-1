@@ -40,7 +40,7 @@ def fitness(vector):
 #****************************M*A*I*N***************************
 
 #Solicitamos los datos por pantalla
-print("Ingrese los datos: (tamaño gen, tamaño poblacion)")
+print("Ingrese los datos (tamaño gen, tamaño poblacion): ")
 if len(sys.argv) == 4:
     semilla = int(sys.argv[1])
     n = int(sys.argv[2])

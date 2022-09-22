@@ -40,7 +40,7 @@ def fitness(matriz):
         vector = []
         for j in range(c):
             vector = matriz[i]
-            if(vector[i] )
+            #if(vector[i] )
             fit = 0
 
     return vector
@@ -58,7 +58,7 @@ if len(sys.argv) == 4:
     print(semilla, n, p)
 else:
     print("Error")
-    print("Ingrese los parametros correctos: ''py proyecto.py semilla, tamaño tablero, tamaño poblacion''")
+    print("Ingrese los parametros correctos: ''py proyecto.py semilla tamaño tablero tamaño poblacion''")
     
 np.random.seed(semilla)
     

@@ -30,17 +30,27 @@ def ini_poblacion(n, p):
     return matriz
      
 
-#Función fitness que nos da el valor de que tan cercano a lo ideal estamos
-def fitness(vector):
-    tamanio = len(vector)
-    return tamanio
+#Función fitness que nos da el valor de que tan cercano a lo ideal estamos, calculo de coliciones
+def fitness(matriz):
+    tamanio = matriz.shape #se obtene tamaño de la matriz en un vector
+    f = int(tamanio[0]) #tamaño de las filas o poblacion
+    c = int(tamanio[1]) #tamaño de las columnas o tablero
+
+    for i in range(f):
+        vector = []
+        for j in range(c):
+            vector = matriz[i]
+            if(vector[i] )
+            fit = 0
+
+    return vector
+
 
 #**************************************************************
 
 #****************************M*A*I*N***************************
 
 #Solicitamos los datos por pantalla
-print("Ingrese los datos (tamaño gen, tamaño poblacion): ")
 if len(sys.argv) == 4:
     semilla = int(sys.argv[1])
     n = int(sys.argv[2])
@@ -48,12 +58,14 @@ if len(sys.argv) == 4:
     print(semilla, n, p)
 else:
     print("Error")
-    print("Ingrese los parametros correctos: semilla, tamañotablero, tamañopoblacion")
+    print("Ingrese los parametros correctos: ''py proyecto.py semilla, tamaño tablero, tamaño poblacion''")
     
 np.random.seed(semilla)
     
 mimatriz = ini_poblacion(n, p)
+mifitness = fitness(mimatriz)
 
 print(mimatriz)
+print(mifitness)
 
 #**************************************************************

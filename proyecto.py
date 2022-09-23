@@ -35,16 +35,30 @@ def fitness(matriz):
     tamanio = matriz.shape #se obtene tamaño de la matriz en un vector
     f = int(tamanio[0]) #tamaño de las filas o poblacion
     c = int(tamanio[1]) #tamaño de las columnas o tablero
+    
 
     for i in range(f):
+        fit = [] #vector fitness
         vector = []
         vector = matriz[i]
+        cont = 0
         for j in range(c):
+            
             #if(vector[j] )
-            print(vector[j])
-            fit = 0
+            aux = int(vector[j])
+            k = j + 1
+            
+            for k in range(c):
+                der = aux + k
+                izq = aux - k
+                if vector[k] == der:
+                    cont = cont + 1
+                else:
+                    if vector[k] == izq:
+                        cont = cont + 1
+        fit.append(cont)
 
-    #return vector
+    return fit
 
 
 #**************************************************************

@@ -38,12 +38,13 @@ def fitness(matriz):
 
     for i in range(f):
         vector = []
+        vector = matriz[i]
         for j in range(c):
-            vector = matriz[i]
-            #if(vector[i] )
+            #if(vector[j] )
+            print(vector[j])
             fit = 0
 
-    return vector
+    #return vector
 
 
 #**************************************************************

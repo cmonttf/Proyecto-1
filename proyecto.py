@@ -14,9 +14,9 @@ def rand_bin():
     valor = rd.randint(0, 1)
     return valor
 
-#Función randomico entre 0 y n
+#Función randomico entre 1 y n
 def rand_n(n):
-    valor = rd.randint(0, n)
+    valor = rd.randint(0,(n-1))
     return valor
 
 #Funcion incializacion poblacion
@@ -24,8 +24,8 @@ def ini_poblacion(n, p):
     matriz = np.zeros((p,n), dtype=int)
     
     for i in range(p):
-        matriz[i] = np.arange(0,n)
-        np.random.shuffle(matriz[i])
+        for j in range(n):
+            matriz[i][j] = rand_n(n)
     
     return matriz
      

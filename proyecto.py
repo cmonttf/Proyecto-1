@@ -31,32 +31,28 @@ def ini_poblacion(n, p):
      
 
 #Función fitness que nos da el valor de que tan cercano a lo ideal estamos, calculo de coliciones
-def fitness(matriz):
-    tamanio = matriz.shape #se obtene tamaño de la matriz en un vector
-    f = int(tamanio[0]) #tamaño de las filas o poblacion
-    c = int(tamanio[1]) #tamaño de las columnas o tablero
-    
+def fitness(ini_poblacion):
+    #max_choques=56
+    tamanio=ini_poblacion.shape
+    poblacion_inicial=ini_poblacion
+    p=tamanio[0] #poblacion
+    n=tamanio[1] #tamaño tablero
+    fit=[]
+    cont=0
 
-    for i in range(f):
-        fit = [] #vector fitness
-        vector = []
-        vector = matriz[i]
-        cont = 0
-        for j in range(c):
-            
-            #if(vector[j] )
-            aux = int(vector[j])
-            k = j + 1
-            
-            for k in range(c):
-                der = aux + k
-                izq = aux - k
-                if vector[k] == der:
-                    cont = cont + 1
-                else:
-                    if vector[k] == izq:
-                        cont = cont + 1
-        fit.append(cont)
+    for k in range(p):
+        for i in range(n):
+            for j in range(n):
+                if(i!=j):
+                    if(poblacion_inicial[k][i]==poblacion_inicial[k][j]): #cuenta los choques en horizontal
+                        cont=cont+1
+
+                    if(abs(i-j)==abs(poblacion_inicial[k][i]-poblacion_inicial[k][j])): #cuenta choques en diagonal
+                        cont=cont+1
+
+            if((n-1)==i):
+                fit.append(cont)
+                cont=0
 
     return fit
 

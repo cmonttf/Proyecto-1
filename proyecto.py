@@ -4,6 +4,7 @@ from ctypes import sizeof
 import random as rd
 import numpy as np
 import sys
+import time
 
 #**************************************************************
 
@@ -36,7 +37,7 @@ def fitness(pob):
     tamanio=pob.shape
     p=tamanio[0] #poblacion
     n=tamanio[1] #tamaño tablero
-    fit=[]
+    fit=[] #vector final que nos dara el valor de colicion de cada tablero
     cont=0
 
     for k in range(p):
@@ -80,6 +81,7 @@ def seleccion(v_fit,m_pob,prob_cruza):
 #****************************M*A*I*N***************************
 
 #Solicitamos los datos por pantalla
+
 if len(sys.argv) == 5:
     semilla = int(sys.argv[1])
     n = int(sys.argv[2])
@@ -91,7 +93,9 @@ if len(sys.argv) == 5:
 else:
     print("Error")
     print("Ingrese los parametros correctos: ''py proyecto.py semilla tamaño_tablero tamaño_poblacion probabilidad de cruza''")
-    
+
+
+inicio = time.time()
 np.random.seed(semilla)
     
 encontrado = 0
@@ -101,10 +105,19 @@ while encontrado == 0:
 
 
     for i in range(n):
-        if int(mifitness[i]) == 0:
+        if mifitness[i] == 0:
+            print()
+            print("****************************************")
+            print("****************************************")
             print("Tablero encontrado:")
-            print(mimatriz[i])
+            print("Tablero: ", mimatriz[i])
             encontrado = 1
+            fin = time.time()
+            segundos = fin - inicio
+            print("Tiempo transcurrido: ", segundos, " seg")
+            print("****************************************")
+            print("****************************************")
+            print()
 
     #print(mimatriz)
     #print(mifitness)

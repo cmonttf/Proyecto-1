@@ -55,8 +55,24 @@ def fitness(pob):
 
     return fit
 
-def seleccion(v_fit,m_pob):
+#seleccion de cruzamiento
+def seleccion(v_fit,m_pob,prob_cruza):
+    #print("suma fit= ",np.sum(v_fit))
+    nuevo_fitness=np.ones(np.size(v_fit))/v_fit/(np.ones(np.size(v_fit))*np.sum(v_fit)) #nuevo fitness (1/fitness/sum(fitness))
+    nuevo_proporcion=nuevo_fitness/(np.ones(np.size(v_fit))*np.sum(nuevo_fitness))      #nueva proporcion (nuevo fitness/sum(nuevo fitness))
+    nuevo_ruleta=[]                                                                     #nueva ruleta
 
+    for i in range(np.size(nuevo_proporcion)):
+        if(i==0):
+            nuevo_ruleta.append(nuevo_proporcion[i])
+        else:
+            nuevo_ruleta.append(nuevo_ruleta[(i-1)]+nuevo_proporcion[i])
+
+    #print("nuevo fitnes = ",nuevo_fitness)
+    #print("nuevo proporcion = ",nuevo_proporcion)
+    #print("suma total de nuevo fitnes = ",np.sum(nuevo_fitness))
+    #print("suma total de nuevo proporcion = ",np.sum(nuevo_proporcion))
+    #print("nueva ruleta = ",nuevo_ruleta)
     a=0
     return a
 #**************************************************************

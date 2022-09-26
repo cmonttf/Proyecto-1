@@ -80,7 +80,7 @@ def seleccion(v_fit,m_pob,prob_cruza):
 #****************************M*A*I*N***************************
 
 #Solicitamos los datos por pantalla
-if len(sys.argv) == 4:
+if len(sys.argv) == 5:
     semilla = int(sys.argv[1])
     n = int(sys.argv[2])
     p = int(sys.argv[3])

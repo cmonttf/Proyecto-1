@@ -94,17 +94,21 @@ else:
     
 np.random.seed(semilla)
     
-mimatriz = ini_poblacion(n, p)
-mifitness = fitness(mimatriz)
+encontrado = 0
+while encontrado == 0:
+    mimatriz = ini_poblacion(n, p)
+    mifitness = fitness(mimatriz)
 
-for i in range(n):
-    if int(mifitness[i]) == 0:
-        print("Tablero encontrado:")
-        print(mimatriz[i])
 
-#print(mimatriz)
-#print(mifitness)
+    for i in range(n):
+        if int(mifitness[i]) == 0:
+            print("Tablero encontrado:")
+            print(mimatriz[i])
+            encontrado = 1
 
-seleccion(mifitness,mimatriz,prov_c)
+    #print(mimatriz)
+    #print(mifitness)
+
+    seleccion(mifitness,mimatriz,prov_c)
 
 #**************************************************************

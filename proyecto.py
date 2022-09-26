@@ -84,11 +84,13 @@ if len(sys.argv) == 5:
     semilla = int(sys.argv[1])
     n = int(sys.argv[2])
     p = int(sys.argv[3])
-    c = int(sys.argv[4])
-    print(semilla, n, p, )
+    prov_c = int(sys.argv[4])
+    print("semilla             = ",semilla)
+    print("tamaño de tablero   = ", n)
+    print("tamaño de poblacion = ", p)
 else:
     print("Error")
-    print("Ingrese los parametros correctos: ''py proyecto.py semilla tamañoTablero tamañoPoblacion probabilidadDeCruza''")
+    print("Ingrese los parametros correctos: ''py proyecto.py semilla tamaño_tablero tamaño_poblacion probabilidad de cruza''")
     
 np.random.seed(semilla)
     
@@ -102,5 +104,7 @@ for i in range(n):
 
 #print(mimatriz)
 #print(mifitness)
+
+seleccion(mifitness,mimatriz,prov_c)
 
 #**************************************************************

@@ -15,9 +15,9 @@ def rand_bin():
     valor = rd.randint(0, 1)
     return valor
 
-#Función randomico entre 1 y n
+#Función randomico entre 0 y n
 def rand_n(n):
-    valor = rd.randint(0,(n-1))
+    valor = rd.randint(0,n)
     return valor
 
 #Funcion incializacion poblacion
@@ -25,32 +25,28 @@ def ini_poblacion(n, p):
     matriz = np.zeros((p,n), dtype=int)
     
     for i in range(p):
-        for j in range(n):
-            matriz[i][j] = rand_n(n)
+        matriz[i] = np.arange(0,n)
+        np.random.shuffle(matriz[i])
     
     return matriz
      
 
 #Función fitness que nos da el valor de que tan cercano a lo ideal estamos, calculo de coliciones
-def fitness(pob):
-    #max_choques=56
-    tamanio=pob.shape
-    p=tamanio[0] #poblacion
-    n=tamanio[1] #tamaño tablero
-    fit=[] #vector final que nos dara el valor de colicion de cada tablero
-    cont=0
-
-    for k in range(p):
-        for i in range(n):
-            for j in range(n):
+def fitness(matriz):
+    tamanio = matriz.shape #se obtene tamaño de la matriz en un vector
+    f = int(tamanio[0]) #tamaño de las filas o poblacion
+    c = int(tamanio[1]) #tamaño de las columnas o tablero
+    cont = 0
+    fit = [] #vector fitness            
+    for k in range(f):
+        for i in range(c):
+            for j in range(c):
                 if(i!=j):
-                    if(pob[k][i]==pob[k][j]): #cuenta los choques en horizontal
+                    if(matriz[k][i]==matriz[k][j]): #cuenta los choques en horizontal
                         cont=cont+1
-
-                    if(abs(i-j)==abs(pob[k][i]-pob[k][j])): #cuenta choques en diagonal
+                    if(abs(i-j)==abs(matriz[k][i]-matriz[k][j])): #cuenta choques en diagonal
                         cont=cont+1
-
-            if((n-1)==i):
+            if((c-1)==i):
                 fit.append(cont)
                 cont=0
 
@@ -102,10 +98,12 @@ encontrado = 0
 while encontrado == 0:
     mimatriz = ini_poblacion(n, p)
     mifitness = fitness(mimatriz)
+    print(mimatriz)
+    print(mifitness)
 
 
     for i in range(n):
-        if mifitness[i] == 0:
+        if int(mifitness[i]) == 0:
             print()
             print("****************************************")
             print("****************************************")

@@ -27,6 +27,8 @@
 
 ## 2. Programa
 
+[link](https://github.com/cmonttf/Proyecto-1/archive/refs/heads/main.zip)
+
 <p style="text-align: justify">El código debe ser desarrollado usando una metodología de programación modular, es decir, debe haber uso de funciones y/o métodos que implementen de forma genérica los principales operadores genéticos los cuales serán usados en el programa principal.</p>
 
 <p style="text-align: justify">El objetivo de esta implementación es poder crear una biblioteca de gunciones y/o métodos que puedan ser re-utilizados en cualquier otro programa que se pueda implementar en el futuro con el correspondiente ahorro en tiempo y líneas de código.</p>

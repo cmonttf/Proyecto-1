@@ -143,7 +143,8 @@ np.random.seed(semilla)
 encontrado = 0
 mimatriz = ini_poblacion(n, p)
 mifitness = fitness(mimatriz)
-while encontrado == 0:
+iteracion = 0
+while (iteracion < 1000) and (encontrado == 0):
     for i in range(n):
         if mifitness[i] == 0:
             print()
@@ -162,6 +163,7 @@ while encontrado == 0:
             mimatriz = seleccion(mifitness,mimatriz,prov_c)
             cruza(mimatriz)
             mifitness = fitness(mimatriz)
+            iteracion += 1
 
 
 #print(mifitness)

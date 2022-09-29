@@ -35,4 +35,4 @@
 
 <p style="text-align: justify">Para poder hacer funcionar este proyecto, deberá instalar la biblioteca numpy, para ello deberá abrir la terminal y poner lo siguiente:</p>
 
-´´´> pip install numpy´´´
+'''> pip install numpy'''

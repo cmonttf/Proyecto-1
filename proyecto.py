@@ -92,9 +92,10 @@ def cruza(pobl):
     p=dim[0]
     n=dim[1]
     ind=np.zeros(2,dtype=int)
+    desendiente= np.zeros((2,n), dtype=int)
     con_ind=np.zeros(2,dtype=boolean)
     cruzados=np.zeros(p,dtype=boolean)
-    punto_cruza=valor = np.random.randint(1,n)
+    punto_cruza=np.random.randint(1,n)
     
     for i in range(2):
         while(con_ind[i]==False):
@@ -103,12 +104,12 @@ def cruza(pobl):
                 cruzados[ind[i]]=TRUE
                 con_ind[i]=TRUE
 
-    print(ind)
-    print(punto_cruza)
-    print(pobl[ind[0]][0:punto_cruza])
-    print(pobl[ind[0]][punto_cruza:n])
-        
-    return 0
+    desendiente[0]=np.concatenate([pobl[ind[0]][0:punto_cruza],pobl[ind[1]][punto_cruza:n]],axis=None)
+    desendiente[1]=np.concatenate([pobl[ind[1]][0:punto_cruza],pobl[ind[0]][punto_cruza:n]],axis=None)
+    print("desendientes",desendiente)
+    print("ind",ind)
+    
+    return desendiente,ind
 
 
 
@@ -164,5 +165,9 @@ mifitness = fitness(mimatriz)
 mimatriz =seleccion(mifitness,mimatriz,prov_c)
 print(mimatriz,"\n")
 
-cruza(mimatriz)
+c=cruza(mimatriz)
+print(c[0][0])
+print(c[0][1])
+print(c[1][0])
+print(c[1][1])
 #**************************************************************

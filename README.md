@@ -33,6 +33,11 @@
 
 ## 3. Intalación
 
-<p style="text-align: justify">Para poder hacer funcionar este proyecto, deberá instalar la biblioteca numpy, para ello deberá abrir la terminal y poner lo siguiente:</p>
+<p style="text-align: justify">Para poder hacer funcionar este proyecto, deberá seguir los siguientes pasos:</p>
 
-`> pip install numpy`
+- Para bajar el proyecto deberá ingresar por terminal el siguiente código: ```git clone https://github.com/cmonttf/Proyecto-1.git```
+```> pip install numpy```
+
+## 4. Ejecución
+
+<p style="text-align: justify">Para poder hacer funcionar este proyecto, deberá instalar la biblioteca numpy, para ello deberá abrir la terminal y poner lo siguiente:</p>

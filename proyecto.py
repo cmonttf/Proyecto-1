@@ -96,7 +96,14 @@ def cruza(pobl):
     con_ind=np.zeros(2,dtype=boolean)
     cruzados=np.zeros(p,dtype=boolean)
     punto_cruza=np.random.randint(1,n)
+    all_cruzado=False
     
+    for j in range(p):
+        print(cruzados[j])
+        if(cruzados[j]==True):
+            if(j==p):
+                all_cruzado=TRUE
+             
     for i in range(2):
         while(con_ind[i]==False):
             ind[i]=np.random.randint(p)
@@ -108,10 +115,21 @@ def cruza(pobl):
     desendiente[1]=np.concatenate([pobl[ind[1]][0:punto_cruza],pobl[ind[0]][punto_cruza:n]],axis=None)
     print("desendientes",desendiente)
     print("ind",ind)
-    
-    return desendiente,ind
+    print("punto de cruza",punto_cruza)
 
+    return desendiente,ind,all_cruzado
 
+#Funcion cruzamiento
+def cruzamiento(poblacion,cruza_f):
+    dim=np.shape(poblacion)
+    p=dim[0]
+    n=dim[1]
+    print(cruza_f[2][0])
+    #while(cruza_f[][]):
+    poblacion[cruza_f[1][0]]=cruza_f[0][0]
+    poblacion[cruza_f[1][1]]=cruza_f[0][1]
+
+    return poblacion
 
 #**************************************************************
 
@@ -164,10 +182,9 @@ print(mimatriz,"\n")
 mifitness = fitness(mimatriz)
 mimatriz =seleccion(mifitness,mimatriz,prov_c)
 print(mimatriz,"\n")
+print(cruzamiento(mimatriz,cruza(mimatriz)))
 
-c=cruza(mimatriz)
-print(c[0][0])
-print(c[0][1])
-print(c[1][0])
-print(c[1][1])
+
+
+
 #**************************************************************

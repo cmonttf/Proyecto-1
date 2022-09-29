@@ -1,4 +1,7 @@
-a=0
+import numpy as np
 
+a=np.ones(3,dtype=int)
+a[2]=1
+print(a)
 
-print(0/5)
+print(np.all(a))

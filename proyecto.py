@@ -136,16 +136,14 @@ else:
     print("Ingrese los parametros correctos: ''py proyecto.py semilla tamaño_tablero tamaño_poblacion probabilidad de cruza''")
 #np.random.seed(semilla)
 
-'''
+
 inicio = time.time()
 np.random.seed(semilla)
     
 encontrado = 0
+mimatriz = ini_poblacion(n, p)
+mifitness = fitness(mimatriz)
 while encontrado == 0:
-    mimatriz = ini_poblacion(n, p)
-    mifitness = fitness(mimatriz)
-
-
     for i in range(n):
         if mifitness[i] == 0:
             print()
@@ -160,16 +158,21 @@ while encontrado == 0:
             print("****************************************")
             print("****************************************")
             print()
-'''
+        else:
+            mimatriz = seleccion(mifitness,mimatriz,prov_c)
+            cruza(mimatriz)
+            mifitness = fitness(mimatriz)
+
 
 #print(mifitness)
-mimatriz = ini_poblacion(n, p)
-print(mimatriz,"\n")
-mifitness = fitness(mimatriz)
-mimatriz =seleccion(mifitness,mimatriz,prov_c)
-print(mimatriz,"\n")
+#mimatriz = ini_poblacion(n, p)
+#print(mimatriz,"\n")
+#mifitness = fitness(mimatriz)
+#print(mifitness)
+#mimatriz =seleccion(mifitness,mimatriz,prov_c)
+#print(mimatriz,"\n")
 
-cruza(mimatriz)
+#cruza(mimatriz)
 
 
 #**************************************************************

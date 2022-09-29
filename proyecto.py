@@ -91,29 +91,33 @@ def cruza(pobl):
     dim=np.shape(pobl)
     p=dim[0]
     n=dim[1]
-    ind=np.zeros(2,dtype=int)
-    desendiente= np.zeros((p,n), dtype=int)
-    con_ind=np.zeros(2,dtype=boolean)
-    cruzados=np.zeros(p,dtype=boolean)
-    punto_cruza=np.random.randint(1,n)
+
+    m = np.zeros((p), dtype=int)
+    m = np.arange(p)
+    np.random.shuffle(m)   
+    desendiente= np.zeros((p,n), dtype=int) 
+    punto_cruza=0
+    d=np.zeros(n, dtype=int) 
+    print(m)
+    for i in range(0,p-1,2):
+        
+        
+        punto_cruza=np.random.randint(1,n)
+        print("punto de cruza",punto_cruza)
+        desendiente[m[i]]=np.concatenate([pobl[m[i]][0:punto_cruza],pobl[m[i+1]][punto_cruza:n]],axis=None)
+        desendiente[m[i+1]]=np.concatenate([pobl[m[i+1]][0:punto_cruza],pobl[m[i]][punto_cruza:n]],axis=None)
+        print(m)
     
+    for i in range(p):
+        if((desendiente[i]==d).all()):
+            desendiente[i]=pobl[m[i]]
 
-    for i in range(2):
-        while(con_ind[i]==False):
-            ind[i]=np.random.randint(p)
-            if(cruzados[ind[i]]==False):
-                cruzados[ind[i]]=TRUE
-                con_ind[i]=TRUE
-
-        desendiente[0]=np.concatenate([pobl[ind[0]][0:punto_cruza],pobl[ind[1]][punto_cruza:n]],axis=None)
-        desendiente[1]=np.concatenate([pobl[ind[1]][0:punto_cruza],pobl[ind[0]][punto_cruza:n]],axis=None)
+    print("\n",desendiente)
 
     
-    print("desendientes",desendiente)
-    print("ind",ind)
-    print("punto de cruza",punto_cruza)
 
     return desendiente
+
 
 
 
@@ -144,8 +148,8 @@ encontrado = 0
 mimatriz = ini_poblacion(n, p)
 mifitness = fitness(mimatriz)
 while encontrado == 0:
-    for i in range(n):
-        if mifitness[i] == 0:
+    for i in mifitness:
+        if i == 0:
             print()
             print("****************************************")
             print("****************************************")

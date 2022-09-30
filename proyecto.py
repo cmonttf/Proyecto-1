@@ -19,10 +19,12 @@ def rand_bin():
     valor = np.random.randint(0, 1)
     return valor
 
+
 #Función randomico entre 1 y n
 def rand_n(n):
     valor = np.random.randint(0,n)
     return valor
+
 
 #Funcion incializacion poblacion
 def ini_poblacion(n, p):
@@ -56,35 +58,41 @@ def fitness(pob):
                 if(fit[k]==0):
                     print("AAAAA")
                 cont=0
-
-    
-
+    print("fitness\n",fit)
     return fit
+
 
 #Seleccion de cruzamiento
 def seleccion(v_fit,m_pob,prob_cruza):
-    nuevo_fitness=np.zeros(np.size(v_fit))
+    if(np.amin(v_fit)==0):
+        i=int(np.where(v_fit==0)[0][0])
+        return i
 
-    for i in range(np.size(v_fit)):
-        if(v_fit[i]==0):
-            v_fit[i]=1
-        nuevo_fitness[i]=1/v_fit[i]/np.sum(v_fit)
+    else:
+        nuevo_fitness=np.zeros(np.size(v_fit))
+        tamanio=np.shape(m_pob)
+        p=tamanio[0] #poblacion
 
-    nuevo_proporcion=nuevo_fitness/(np.ones(np.size(nuevo_fitness))*np.sum(nuevo_fitness)) 
-    nuevo_ruleta=np.zeros(np.size(nuevo_proporcion))                                    #nueva ruleta
-    cont=0                      
-                                
-
-    for i in range(np.size(nuevo_proporcion)):
-        if(i==0):
-            nuevo_ruleta[i]=nuevo_proporcion[i]
-        else:
-            nuevo_ruleta[i]=nuevo_ruleta[(i-1)]+nuevo_proporcion[i]
+        nuevo_fitness=np.ones(np.size(v_fit))/v_fit/(np.ones(np.size(v_fit))*np.sum(v_fit)) 
+        nuevo_proporcion=nuevo_fitness/(np.ones(np.size(nuevo_fitness))*np.sum(nuevo_fitness)) 
+        nuevo_ruleta=np.zeros(np.size(nuevo_proporcion))                                    
+        cont=0                      
         
-        if(nuevo_ruleta[i]<(prob_cruza/100)):
-            cont=cont+1
-  
-    return m_pob[0:cont]
+        for i in range(np.size(nuevo_proporcion)):
+            if(i==0):
+                nuevo_ruleta[i]=nuevo_proporcion[i]
+            else:
+                nuevo_ruleta[i]=nuevo_ruleta[(i-1)]+nuevo_proporcion[i]
+            
+            if(nuevo_ruleta[i]<=(prob_cruza/100)):
+                cont=cont+1
+
+        cont_p=0
+        for i in range(cont+1,p):
+            m_pob[i]=m_pob[cont_p]
+            cont_p=cont_p+1
+        
+        return m_pob
 
 #Cruzar dos individuos con un punto de cruza.
 def cruza(pobl):
@@ -92,31 +100,85 @@ def cruza(pobl):
     p=dim[0]
     n=dim[1]
 
-    m = np.zeros((p), dtype=int)
-    m = np.arange(p)
-    np.random.shuffle(m)   
-    desendiente= np.zeros((p,n), dtype=int) 
+    pob_aux=np.zeros((p), dtype=int)
+    pob_aux = np.arange(p)
+    np.random.shuffle(pob_aux)
+    descendiente= np.zeros((p,n), dtype=int) 
     punto_cruza=0
-    d=np.zeros(n, dtype=int) 
-    print(m)
-    for i in range(0,p-1,2):
-        
-        
-        punto_cruza=np.random.randint(1,n)
-        print("punto de cruza",punto_cruza)
-        desendiente[m[i]]=np.concatenate([pobl[m[i]][0:punto_cruza],pobl[m[i+1]][punto_cruza:n]],axis=None)
-        desendiente[m[i+1]]=np.concatenate([pobl[m[i+1]][0:punto_cruza],pobl[m[i]][punto_cruza:n]],axis=None)
-        print(m)
+    cont=0
+   
+
+    while(cont<p):
+
+            if(np.array_equal(pobl[cont],pobl[(cont+1)])==False):
+                punto_cruza=np.random.randint(1,n)
+                descendiente[cont]=np.append(pobl[cont][0:punto_cruza],pobl[(cont+1)][punto_cruza:n])
+                descendiente[(cont+1)]=np.append(pobl[(cont+1)][0:punto_cruza],pobl[cont][punto_cruza:n])
+                cont=cont+2
+    
+         
+
+    return descendiente
+
+#Coreeccion de individuos cruzados
+def correccion(cruza):
+    dim=np.shape(cruza)
+    p=dim[0]
+    n=dim[1]
+    aux=np.zeros((p,n), dtype=int)
     
     for i in range(p):
-        if((desendiente[i]==d).all()):
-            desendiente[i]=pobl[m[i]]
+            for k in range(n):
+                aux[i][cruza[i][k]]=1 
 
-    print("\n",desendiente)
+    for i in range(p):
+        for j in range(n):
+            for k in range(j):
+                for l in range(n):
+                    if(cruza[i][j]==cruza[i][k] and j!=k):
+                        if(aux[i][l]==0):
+                            cruza[i][j]=l
 
-    
+    return cruza     
+                
+#mutacion
+def mutacion(pob,prob_muta):
+    dim=np.shape(pob)
+    p=dim[0]
+    n=dim[1]
+    prob=np.ones(p,dtype=float)
+    matrizaux = np.zeros((p,n), dtype=int)
+    cont=0
+    cont_r=0
+    m=0
 
-    return desendiente
+    for i in range(p):
+        prob[i]=np.random.rand()
+        if(prob[i]<=prob_muta/100):
+            matrizaux[cont]=pob[i]
+            cont=cont+1
+
+    for j in range(cont,p):
+        matrizaux[j]=matrizaux[cont_r]
+        cont_r=cont_r+1
+
+    for kk in range(p):
+        r_aux1=np.random.randint(0,n)
+        r_aux2=np.random.randint(0,n)
+        while(m==0):
+            if(r_aux2==r_aux1):
+                r_aux2=np.random.randint(0,n)
+            else:
+                m=1
+        aux1=matrizaux[kk][r_aux1]
+        aux2=matrizaux[kk][r_aux2]
+        matrizaux[kk][r_aux2]=aux1
+        matrizaux[kk][r_aux1]=aux2
+
+    return matrizaux
+
+
+
 
 
 
@@ -127,11 +189,13 @@ def cruza(pobl):
 
 #Solicitamos los datos por pantalla
 
-if len(sys.argv) == 5:
+if len(sys.argv) == 7:
     semilla = int(sys.argv[1])
     n = int(sys.argv[2])
     p = int(sys.argv[3])
-    prov_c = int(sys.argv[4])
+    probabilidad_cruza = int(sys.argv[4])
+    probabilidad_mutacion=int(sys.argv[5])
+    iteraciones=int(sys.argv[6])
     print("semilla            = ",semilla)
     print("tamaño de tablero   = ", n)
     print("tamaño de poblacion = ", p)
@@ -141,44 +205,22 @@ else:
 #np.random.seed(semilla)
 
 
-inicio = time.time()
-np.random.seed(semilla)
-    
-encontrado = 0
+
+
+contador=0
+posicion_final=0
 mimatriz = ini_poblacion(n, p)
-mifitness = fitness(mimatriz)
-iteracion = 0
-while (iteracion < 1000) and (encontrado == 0):
-    for i in range(n):
-        if mifitness[i] == 0:
-            print()
-            print("****************************************")
-            print("****************************************")
-            print("Tablero encontrado:")
-            print("Tablero: ", mimatriz[i])
-            encontrado = 1
-            fin = time.time()
-            segundos = fin - inicio
-            print("Tiempo transcurrido: ", segundos, " seg")
-            print("****************************************")
-            print("****************************************")
-            print()
-        else:
-            mimatriz = seleccion(mifitness,mimatriz,prov_c)
-            cruza(mimatriz)
-            mifitness = fitness(mimatriz)
-            iteracion += 1
+while(contador<iteraciones):
+    print(mimatriz)
+    mifitness = fitness(mimatriz)
+    if(type(seleccion(mifitness,mimatriz,probabilidad_cruza))==np.ndarray):
+        correccion(cruza(mimatriz))
+        mimatriz=mutacion(mimatriz,probabilidad_mutacion)
 
+    elif(type(seleccion(mifitness,mimatriz,probabilidad_cruza))==int):
+        posicion_final=seleccion(mifitness,mimatriz,probabilidad_cruza)
+        break
+    contador=contador+1
 
-#print(mifitness)
-#mimatriz = ini_poblacion(n, p)
-#print(mimatriz,"\n")
-#mifitness = fitness(mimatriz)
-#print(mifitness)
-#mimatriz =seleccion(mifitness,mimatriz,prov_c)
-#print(mimatriz,"\n")
-
-#cruza(mimatriz)
-
-
+print("mejor posicion = ",mimatriz[posicion_final])
 #**************************************************************

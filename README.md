@@ -27,7 +27,7 @@
 
 ## 2. Programa
 
-[link](https://github.com/cmonttf/Proyecto-1/archive/refs/heads/main.zip)
+
 
 <p style="text-align: justify">El código debe ser desarrollado usando una metodología de programación modular, es decir, debe haber uso de funciones y/o métodos que implementen de forma genérica los principales operadores genéticos los cuales serán usados en el programa principal.</p>
 
@@ -35,6 +35,20 @@
 
 ## 3. Intalación
 
-<p style="text-align: justify">Para poder hacer funcionar este proyecto, deberá instalar la biblioteca numpy, para ello deberá abrir la terminal y poner lo siguiente:</p>
+<p style="text-align: justify">Para intalar primero se debe descargar los archivos a través del siguiente link:</p> 
 
-`> pip install numpy`
+[Archivo](https://github.com/cmonttf/Proyecto-1/archive/refs/heads/main.zip) 
+
+<p style="text-align: justify">Luego debemos seguir los siguientes pasos:</p>
+
+1. Descomprimir el archivo zip y guardarlo en la carpeta que más le acomode
+2. Abrir Visual Studio Code ir a Archivo/Abrir Carpeta y aquí seleccionamos la carpeta del trabajo y presionamos Abrir
+3. Una vez abierto en Visual Studio Code, abrimos una terminal en la cual pondremos el siguiente codigo para instalar la librería Numnpy: `pip install numpy`
+
+## 4. Ejecución
+
+<p style="text-align: justify">Por último en la misma terminal podremos hacer correr nuestro programa con el siguiente formato "python proyecto.py Semilla TamañoTablero TamañoPoblación ProbabilidadDeCruza"</p>
+
+Por ejemplo:
+
+```python proyecto.py 4 10 10 10```

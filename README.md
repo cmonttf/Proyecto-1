@@ -51,4 +51,8 @@
 
 Por ejemplo:
 
-```python proyecto.py 4 10 10 10```
+```python proyecto.py 4 8 8 15 10 1```
+
+o
+
+```py proyecto.py 4 8 8 15 10 1```

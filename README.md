@@ -47,7 +47,7 @@
 
 ## 4. Ejecución
 
-<p style="text-align: justify">Por último en la misma terminal podremos hacer correr nuestro programa con el siguiente formato "python proyecto.py Semilla TamañoTablero TamañoPoblación ProbabilidadDeCruza"</p>
+<p style="text-align: justify">Por último en la misma terminal podremos hacer correr nuestro programa con el siguiente formato "python proyecto.py Semilla TamañoTablero TamañoPoblación ProbabilidadDeCruza ProbabilidadDeMutación Iteraciones"</p>
 
 Por ejemplo:
 

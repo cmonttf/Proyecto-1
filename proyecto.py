@@ -1,11 +1,5 @@
 #*********************B*I*B*L*I*O*T*E*C*A*S********************
 
-from ctypes import sizeof
-from operator import index
-from pickle import TRUE
-import random as rd
-from traceback import print_tb
-from xmlrpc.client import boolean
 import numpy as np
 import sys
 import time
